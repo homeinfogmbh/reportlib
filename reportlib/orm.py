@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 
-DATABASE = MySQLDatabaseProxy('comcat', CONFIG_FILE)
+DATABASE = MySQLDatabaseProxy('reports', CONFIG_FILE)
 
 
 class ReportModel(JSONModel):
