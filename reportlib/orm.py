@@ -38,7 +38,9 @@ class ReportModel(JSONModel):
 class Report(ReportModel):
     """Common report basis."""
 
-    reporter = ForeignKeyField(User, column_name='user', on_delete='CASCADE')
+    reporter = ForeignKeyField(
+        User, column_name='reporter', on_delete='CASCADE'
+    )
     title = BooleanField(default=False)
     text = BooleanField(default=False)
     image = BooleanField(default=False)
@@ -126,7 +128,7 @@ class UserEventReport(Report):
     class Meta:
         table_name = 'user_event_report'
 
-    event = ForeignKeyField(
+    user_event = ForeignKeyField(
         UserEvent, column_name='user_event', on_delete='CASCADE'
     )
 
