@@ -8,5 +8,5 @@ from configlib import load_config
 __all__ = ['CONFIG_FILE', 'get_config']
 
 
-CONFIG_FILE = 'comcat.conf'
+CONFIG_FILE = 'reportlib.conf'
 get_config = partial(cache(load_config), CONFIG_FILE)
