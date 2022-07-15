@@ -15,7 +15,13 @@ from tenantforum import Response, Topic
 from reportlib.config import CONFIG_FILE
 
 
-__all__ = ['OfferReport', 'TopicReport', 'ResponseReport', 'UserEventReport']
+__all__ = [
+    'OfferReport',
+    'TopicReport',
+    'ResponseReport',
+    'UserEventReport',
+    'create_tables'
+]
 
 
 DATABASE = MySQLDatabaseProxy('comcat', CONFIG_FILE)
@@ -123,3 +129,13 @@ class UserEventReport(Report):
     event = ForeignKeyField(
         UserEvent, column_name='user_event', on_delete='CASCADE'
     )
+
+
+def create_tables(*, safe: bool = True) -> None:
+    """Create the database tables."""
+
+    for model in MODELS:
+        model.create_table(safe=safe)
+
+
+MODELS = (OfferReport, TopicReport, ResponseReport, UserEventReport)
