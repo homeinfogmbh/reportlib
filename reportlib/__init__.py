@@ -8,6 +8,7 @@ from reportlib.orm import OfferReport
 from reportlib.orm import ResponseReport
 from reportlib.orm import TopicReport
 from reportlib.orm import UserEventReport
+from reportlib.orm import create_tables
 
 
 __all__ = [
@@ -15,6 +16,7 @@ __all__ = [
     'ResponseReport',
     'TopicReport',
     'UserEventReport',
+    'create_tables',
     'report_offer',
     'report_response',
     'report_topic',
