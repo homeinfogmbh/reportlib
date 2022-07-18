@@ -22,7 +22,7 @@ __all__ = [
 
 
 def report_offer(
-        user: User,
+        reporter: User,
         offer: Offer,
         *,
         title: Optional[bool] = None,
@@ -33,16 +33,16 @@ def report_offer(
 
     try:
         report = OfferReport.get(
-            (OfferReport.user == user) & (OfferReport.offer == offer)
+            (OfferReport.reporter == reporter) & (OfferReport.offer == offer)
         )
     except OfferReport.DoesNotExist:
-        report = OfferReport(user=user, offer=offer)
+        report = OfferReport(reporter=reporter, offer=offer)
 
     return report.update(title=title, text=text, image=image)
 
 
 def report_topic(
-        user: User,
+        reporter: User,
         topic: Topic,
         *,
         title: Optional[bool] = None,
@@ -53,16 +53,16 @@ def report_topic(
 
     try:
         report = TopicReport.get(
-            (TopicReport.user == user) & (TopicReport.topic == topic)
+            (TopicReport.reporter == reporter) & (TopicReport.topic == topic)
         )
     except TopicReport.DoesNotExist:
-        report = TopicReport(user=user, topic=topic)
+        report = TopicReport(reporter=reporter, topic=topic)
 
     return report.update(title=title, text=text, image=image)
 
 
 def report_response(
-        user: User,
+        reporter: User,
         response: Response,
         *,
         title: Optional[bool] = None,
@@ -73,17 +73,17 @@ def report_response(
 
     try:
         report = ResponseReport.get(
-            (ResponseReport.user == user)
+            (ResponseReport.reporter == reporter)
             & (ResponseReport.response == response)
         )
     except ResponseReport.DoesNotExist:
-        report = ResponseReport(user=user, response=response)
+        report = ResponseReport(reporter=reporter, response=response)
 
     return report.update(title=title, text=text, image=image)
 
 
 def report_user_event(
-        user: User,
+        reporter: User,
         user_event: UserEvent,
         *,
         title: Optional[bool] = None,
@@ -94,10 +94,10 @@ def report_user_event(
 
     try:
         report = UserEventReport.get(
-            (UserEventReport.user == user)
+            (UserEventReport.reporter == reporter)
             & (UserEventReport.user_event == user_event)
         )
     except UserEventReport.DoesNotExist:
-        report = UserEventReport(user=user, user_event=user_event)
+        report = UserEventReport(reporter=reporter, user_event=user_event)
 
     return report.update(title=title, text=text, image=image)
