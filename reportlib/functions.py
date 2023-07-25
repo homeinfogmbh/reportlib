@@ -13,21 +13,16 @@ from reportlib.orm import ResponseReport
 from reportlib.orm import UserEventReport
 
 
-__all__ = [
-    'report_offer',
-    'report_topic',
-    'report_response',
-    'report_user_event'
-]
+__all__ = ["report_offer", "report_topic", "report_response", "report_user_event"]
 
 
 def report_offer(
-        reporter: User,
-        offer: Offer,
-        *,
-        title: Optional[bool] = None,
-        text: Optional[bool] = None,
-        image: Optional[bool] = None
+    reporter: User,
+    offer: Offer,
+    *,
+    title: Optional[bool] = None,
+    text: Optional[bool] = None,
+    image: Optional[bool] = None
 ) -> OfferReport:
     """Report an offer."""
 
@@ -42,12 +37,12 @@ def report_offer(
 
 
 def report_topic(
-        reporter: User,
-        topic: Topic,
-        *,
-        title: Optional[bool] = None,
-        text: Optional[bool] = None,
-        image: Optional[bool] = None
+    reporter: User,
+    topic: Topic,
+    *,
+    title: Optional[bool] = None,
+    text: Optional[bool] = None,
+    image: Optional[bool] = None
 ) -> TopicReport:
     """Report a tenant forum topic."""
 
@@ -62,12 +57,12 @@ def report_topic(
 
 
 def report_response(
-        reporter: User,
-        response: Response,
-        *,
-        title: Optional[bool] = None,
-        text: Optional[bool] = None,
-        image: Optional[bool] = None
+    reporter: User,
+    response: Response,
+    *,
+    title: Optional[bool] = None,
+    text: Optional[bool] = None,
+    image: Optional[bool] = None
 ) -> ResponseReport:
     """Report a tenant forum response."""
 
@@ -83,12 +78,12 @@ def report_response(
 
 
 def report_user_event(
-        reporter: User,
-        user_event: UserEvent,
-        *,
-        title: Optional[bool] = None,
-        text: Optional[bool] = None,
-        image: Optional[bool] = None
+    reporter: User,
+    user_event: UserEvent,
+    *,
+    title: Optional[bool] = None,
+    text: Optional[bool] = None,
+    image: Optional[bool] = None
 ) -> UserEventReport:
     """Report a tenant forum response."""
 

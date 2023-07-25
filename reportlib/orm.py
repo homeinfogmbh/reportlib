@@ -16,15 +16,15 @@ from reportlib.config import CONFIG_FILE
 
 
 __all__ = [
-    'OfferReport',
-    'TopicReport',
-    'ResponseReport',
-    'UserEventReport',
-    'create_tables'
+    "OfferReport",
+    "TopicReport",
+    "ResponseReport",
+    "UserEventReport",
+    "create_tables",
 ]
 
 
-DATABASE = MySQLDatabaseProxy('reports', CONFIG_FILE)
+DATABASE = MySQLDatabaseProxy("reports", CONFIG_FILE)
 
 
 class ReportModel(JSONModel):
@@ -38,9 +38,7 @@ class ReportModel(JSONModel):
 class Report(ReportModel):
     """Common report basis."""
 
-    reporter = ForeignKeyField(
-        User, column_name='reporter', on_delete='CASCADE'
-    )
+    reporter = ForeignKeyField(User, column_name="reporter", on_delete="CASCADE")
     title = BooleanField(default=False)
     text = BooleanField(default=False)
     image = BooleanField(default=False)
@@ -48,8 +46,11 @@ class Report(ReportModel):
     @classmethod
     def for_customer(cls, customer: Customer) -> Report:
         """Select reports for the given customer."""
-        return cls.select(cls, User, Tenement).join(User).join(Tenement).where(
-            Tenement.customer == customer
+        return (
+            cls.select(cls, User, Tenement)
+            .join(User)
+            .join(Tenement)
+            .where(Tenement.customer == customer)
         )
 
     @property
@@ -65,10 +66,10 @@ class Report(ReportModel):
         return not any(self.options)
 
     def update(
-            self,
-            title: Optional[bool] = None,
-            text: Optional[bool] = None,
-            image: Optional[bool] = None
+        self,
+        title: Optional[bool] = None,
+        text: Optional[bool] = None,
+        image: Optional[bool] = None,
     ) -> Report:
         """Update the report and returns it."""
         if title is not None:
@@ -88,7 +89,7 @@ class Report(ReportModel):
         json = super().to_json(**kwargs)
 
         if other:
-            json['other'] = self.other
+            json["other"] = self.other
 
         return json
 
@@ -97,39 +98,37 @@ class OfferReport(Report):
     """Report for a marketplace offer."""
 
     class Meta:
-        table_name = 'offer_report'
+        table_name = "offer_report"
 
-    offer = ForeignKeyField(Offer, column_name='offer', on_delete='CASCADE')
+    offer = ForeignKeyField(Offer, column_name="offer", on_delete="CASCADE")
 
 
 class TopicReport(Report):
     """Report for a tenant forum topic."""
 
     class Meta:
-        table_name = 'topic_report'
+        table_name = "topic_report"
 
-    topic = ForeignKeyField(Topic, column_name='topic', on_delete='CASCADE')
+    topic = ForeignKeyField(Topic, column_name="topic", on_delete="CASCADE")
 
 
 class ResponseReport(Report):
     """Report for a tenant forum response."""
 
     class Meta:
-        table_name = 'response_report'
+        table_name = "response_report"
 
-    response = ForeignKeyField(
-        Response, column_name='response', on_delete='CASCADE'
-    )
+    response = ForeignKeyField(Response, column_name="response", on_delete="CASCADE")
 
 
 class UserEventReport(Report):
     """Report for a user event."""
 
     class Meta:
-        table_name = 'user_event_report'
+        table_name = "user_event_report"
 
     user_event = ForeignKeyField(
-        UserEvent, column_name='user_event', on_delete='CASCADE'
+        UserEvent, column_name="user_event", on_delete="CASCADE"
     )
 
 

@@ -12,13 +12,13 @@ from reportlib.orm import create_tables
 
 
 __all__ = [
-    'OfferReport',
-    'ResponseReport',
-    'TopicReport',
-    'UserEventReport',
-    'create_tables',
-    'report_offer',
-    'report_response',
-    'report_topic',
-    'report_user_event'
+    "OfferReport",
+    "ResponseReport",
+    "TopicReport",
+    "UserEventReport",
+    "create_tables",
+    "report_offer",
+    "report_response",
+    "report_topic",
+    "report_user_event",
 ]

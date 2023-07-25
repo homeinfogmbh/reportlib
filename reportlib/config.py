@@ -5,8 +5,8 @@ from functools import cache, partial
 from configlib import load_config
 
 
-__all__ = ['CONFIG_FILE', 'get_config']
+__all__ = ["CONFIG_FILE", "get_config"]
 
 
-CONFIG_FILE = 'reportlib.conf'
+CONFIG_FILE = "reportlib.conf"
 get_config = partial(cache(load_config), CONFIG_FILE)
