@@ -33,7 +33,7 @@ def report_offer(
     except OfferReport.DoesNotExist:
         report = OfferReport(reporter=reporter, offer=offer)
 
-    return report.update(title=title, text=text, image=image)
+    return report.update_report(title=title, text=text, image=image)
 
 
 def report_topic(
@@ -53,7 +53,7 @@ def report_topic(
     except TopicReport.DoesNotExist:
         report = TopicReport(reporter=reporter, topic=topic)
 
-    return report.update(title=title, text=text, image=image)
+    return report.update_report(title=title, text=text, image=image)
 
 
 def report_response(
@@ -74,7 +74,7 @@ def report_response(
     except ResponseReport.DoesNotExist:
         report = ResponseReport(reporter=reporter, response=response)
 
-    return report.update(title=title, text=text, image=image)
+    return report.update_report(title=title, text=text, image=image)
 
 
 def report_user_event(
@@ -95,4 +95,4 @@ def report_user_event(
     except UserEventReport.DoesNotExist:
         report = UserEventReport(reporter=reporter, user_event=user_event)
 
-    return report.update(title=title, text=text, image=image)
+    return report.update_report(title=title, text=text, image=image)

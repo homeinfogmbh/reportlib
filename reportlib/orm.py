@@ -65,7 +65,7 @@ class Report(ReportModel):
         """Return whether none specific option was selected."""
         return not any(self.options)
 
-    def update(
+    def update_report(
         self,
         title: Optional[bool] = None,
         text: Optional[bool] = None,
